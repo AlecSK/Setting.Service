@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Setting.Service.Application</name>
+    </assembly>
+    <members>
+        <member name="M:Setting.Service.Application.Controllers.CacheController.CacheReset">
+             <summary>
+             Сброс кеша сервиса.
+             </summary>
+             <remarks>
+             Пример использования:
+            
+                 GET /cache/reset
+             </remarks>
+             <response code="400">
+             Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.
+             </response>
+             <response code="401">
+             Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.
+             </response>
+             <response code="403">
+             Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”
+             </response>
+             <response code="422">
+             Ошибка входных данных
+             </response>
+             <response code="429">
+             Слишком много запросов
+             </response>
+             <response code="500">
+             Внутренняя ошибка
+             </response>
+        </member>
+        <member name="M:Setting.Service.Application.Controllers.ModulesController.GetModules">
+             <summary>
+             Получение информации о модулях системы.
+             </summary>
+             <returns></returns>
+             <remarks>
+             Пример использования:
+            
+                 GET /modules
+             </remarks>
+             <response code="400">
+             Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.
+             </response>
+             <response code="401">
+             Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.
+             </response>
+             <response code="403">
+             Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”
+             </response>
+             <response code="422">
+             Ошибка входных данных
+             </response>
+             <response code="429">
+             Слишком много запросов
+             </response>
+             <response code="500">
+             Внутренняя ошибка
+             </response>
+        </member>
+        <member name="M:Setting.Service.Application.Controllers.ModulesController.GetSettingValueByModuleId(System.Int32,System.String)">
+             <summary>
+             Получение текстового значения настройки по названию и идентификатору модуля.
+             </summary>
+             <param name="moduleId">Идентификатор модуля</param>
+             <param name="settingName">Название настройки</param>
+             <returns></returns>
+             <remarks>
+             Пример использования:
+            
+                 GET /modules/127/settings/DefaultCacheLifeTimeInMinutes/value
+             </remarks> 
+             <response code="400">
+             Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.
+             </response>
+             <response code="401">
+             Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.
+             </response>
+             <response code="403">
+             Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”
+             </response>
+             <response code="422">
+             Ошибка входных данных
+             </response>
+             <response code="429">
+             Слишком много запросов
+             </response>
+             <response code="500">
+             Внутренняя ошибка
+             </response>
+        </member>
+        <member name="M:Setting.Service.Application.Controllers.ModulesController.GetSettingValuesByModuleId(System.Int32,System.Boolean)">
+             <summary>
+             Получение словаря текстовых значений настроек модуля по его идентификатору.
+             </summary>
+             <param name="moduleId">Идентификатор модуля</param>
+             <param name="useCache">Признак использования кеширования. Если false - получить значения из БД MasterData с обновлением кеша сервиса.</param>
+             <returns></returns>
+             <remarks>
+             Пример использования:
+            
+                 GET /modules/5/true/settings/values
+             </remarks> 
+             <response code="400">
+             Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.
+             </response>
+             <response code="401">
+             Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.
+             </response>
+             <response code="403">
+             Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”
+             </response>
+             <response code="422">
+             Ошибка входных данных
+             </response>
+             <response code="429">
+             Слишком много запросов
+             </response>
+             <response code="500">
+             Внутренняя ошибка
+             </response>
+        </member>
+        <member name="M:Setting.Service.Application.Interfaces.IReadSetting.GetModules">
+            <summary>Получение информации о модулях системы.</summary>
+        </member>
+        <member name="M:Setting.Service.Application.Interfaces.IReadSetting.GetSettingValueByModuleId(System.Int32,System.String)">
+            <summary>Получение текстового значения настройки по названию и идентификатору модуля.</summary>
+            <param name="moduleId">Идентификатор модуля</param>
+            <param name="settingName">Название настройки</param>
+        </member>
+        <member name="M:Setting.Service.Application.Interfaces.IReadSetting.GetSettingValuesByModuleId(System.Int32,System.Boolean)">
+            <summary>Получение словаря текстовых значений настроек модуля по его идентификатору.</summary>
+            <param name="moduleId">Идентификатор модуля</param>
+            <param name="useCache">Признак использования кеширования. Если false - получить значения из БД MasterData с обновлением кеша сервиса.</param>
+        </member>
+    </members>
+</doc>

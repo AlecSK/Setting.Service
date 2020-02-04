@@ -1,0 +1,439 @@
+﻿{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Setting.Service",
+    "description": "API для работы с сервисом настроек",
+    "termsOfService": "https://openapi.org",
+    "contact": {
+      "name": "Open API Project",
+      "url": "https://openapi.org",
+      "email": ""
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/Cache/Reset": {
+      "get": {
+        "tags": [
+          "Cache"
+        ],
+        "summary": "Сброс кеша сервиса.",
+        "description": "Пример использования:\r\n            \r\n    GET /cache/reset",
+        "operationId": "CacheReset",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка входных данных",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Слишком много запросов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Внутренняя ошибка"
+          }
+        }
+      }
+    },
+    "/Modules": {
+      "get": {
+        "tags": [
+          "Modules"
+        ],
+        "summary": "Получение информации о модулях системы.",
+        "description": "Пример использования:\r\n            \r\n    GET /modules",
+        "operationId": "GetModules",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Module"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка входных данных",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Слишком много запросов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Внутренняя ошибка"
+          }
+        }
+      }
+    },
+    "/Modules/{moduleId}/settings/{settingName}/value": {
+      "get": {
+        "tags": [
+          "Modules"
+        ],
+        "summary": "Получение текстового значения настройки по названию и идентификатору модуля.",
+        "description": "Пример использования:\r\n            \r\n    GET /modules/127/settings/DefaultCacheLifeTimeInMinutes/value",
+        "operationId": "GetSettingValueByModuleId",
+        "parameters": [
+          {
+            "name": "moduleId",
+            "in": "path",
+            "description": "Идентификатор модуля",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "settingName",
+            "in": "path",
+            "description": "Название настройки",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка входных данных",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Слишком много запросов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Внутренняя ошибка"
+          }
+        }
+      }
+    },
+    "/Modules/{moduleId}/{useCache}/settings/values": {
+      "get": {
+        "tags": [
+          "Modules"
+        ],
+        "summary": "Получение словаря текстовых значений настроек модуля по его идентификатору.",
+        "description": "Пример использования:\r\n            \r\n    GET /modules/5/true/settings/values",
+        "operationId": "GetSettingValuesByModuleId",
+        "parameters": [
+          {
+            "name": "moduleId",
+            "in": "path",
+            "description": "Идентификатор модуля",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "useCache",
+            "in": "path",
+            "description": "Признак использования кеширования. Если false - получить значения из БД MasterData с обновлением кеша сервиса.",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Setting"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Неправильно сформирован запрос: не хватает обязательных параметров, используются неподдерживаемые параметры, отсутствует подпись или возникла другая ошибка.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Маркер доступа (access token) просрочен, аннулирован или не действует по другим причинам.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Маркер доступа должен иметь более широкие границы применения. Ответ может содержать требуемое значение атрибута “scope”",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка входных данных",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Слишком много запросов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Внутренняя ошибка"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "Status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "Instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "Extensions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Module": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "systemName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Setting": {
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "description": "Для доступа можно использовать учетные данные - user1 : password1",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ]
+}
