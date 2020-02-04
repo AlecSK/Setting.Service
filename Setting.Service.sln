@@ -19,6 +19,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2AB18C47-919C-4D29-9BCF-002C98AC06AE}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setting.Service.UnchaseClient", "Setting.Service.UnchaseClient\Setting.Service.UnchaseClient.csproj", "{155C7971-31F7-4884-8AA5-E0E406930CE3}"
@@ -31,7 +32,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setting.Service.DataAccess.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setting.Service.Common", "Setting.Service.Common\Setting.Service.Common.csproj", "{06B12902-8DE5-410E-9136-8EF4C752209B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setting.Service.Implementation", "Setting.Service.Implementation\Setting.Service.Implementation.csproj", "{710CBE2C-DB69-4197-A834-389C577DDFDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Setting.Service.Implementation", "Setting.Service.Implementation\Setting.Service.Implementation.csproj", "{710CBE2C-DB69-4197-A834-389C577DDFDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9B4456FC-13B4-4607-BEEF-FECF91589132}"
 EndProject
